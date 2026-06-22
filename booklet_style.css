@@ -1,0 +1,103 @@
+/* Print stylesheet for road-trip route booklets (pandoc HTML -> Chrome PDF) */
+
+@page {
+  size: A4;
+  margin: 18mm 16mm 16mm 16mm;
+}
+
+html {
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+body {
+  font-family: -apple-system, "Helvetica Neue", "Segoe UI", Arial, sans-serif;
+  font-size: 10.5pt;
+  line-height: 1.5;
+  color: #1c1c1e;
+  max-width: 100%;
+  margin: 0;
+}
+
+/* Headings */
+h1 {
+  font-size: 21pt;
+  line-height: 1.2;
+  color: #8a3b12;
+  border-bottom: 2px solid #d98b4a;
+  padding-bottom: 6px;
+  margin: 0 0 12px;
+}
+h2 {
+  font-size: 15pt;
+  color: #8a3b12;
+  margin: 22px 0 4px;
+  padding-top: 6px;
+  border-top: 1px solid #e6d2c0;
+  page-break-after: avoid;
+}
+h3 {
+  font-size: 12pt;
+  color: #555;
+  font-style: italic;
+  font-weight: 600;
+  margin: 2px 0 10px;
+  page-break-after: avoid;
+}
+
+p { margin: 6px 0; }
+
+/* Route map images */
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 10px auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  page-break-inside: avoid;
+}
+
+/* Links stay clearly clickable */
+a {
+  color: #1a5fb4;
+  text-decoration: none;
+  border-bottom: 1px solid #aac4e6;
+  word-break: break-word;
+}
+
+/* Lists */
+ul, ol { margin: 6px 0 6px 4px; padding-left: 22px; }
+li { margin: 3px 0; }
+
+/* Blockquotes: notes / lunch / avoid callouts */
+blockquote {
+  margin: 10px 0;
+  padding: 7px 12px;
+  background: #f6f1ea;
+  border-left: 3px solid #d98b4a;
+  color: #3a3a3a;
+  page-break-inside: avoid;
+}
+blockquote p { margin: 3px 0; }
+
+/* Horizontal rules separate days -> use as page breaks */
+hr {
+  border: none;
+  border-top: 1px dashed #c9b8a6;
+  margin: 0;
+  page-break-after: always;
+  height: 0;
+}
+
+code {
+  background: #efece8;
+  padding: 1px 4px;
+  border-radius: 3px;
+  font-size: 0.9em;
+}
+
+strong { color: #111; }
+
+/* Keep a day's heading block with its image */
+h2 + h3 + p { page-break-before: avoid; }
